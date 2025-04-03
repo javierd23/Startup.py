@@ -22,12 +22,13 @@ class Home:
         else:
             return "{} needs to be remove".format(self.appliance)
 
-
-
     @classmethod
     def home_rate(cls, amount):
         cls.price_objs = amount
-Home.home_rate(0.18)
-home1 = Home('sofa', 'bathroom', 'cell', 1000)
-home2 = Home('table', 'bedroom', 'cam', 5000)
-print(home1.rate_of_price())
+
+
+
+
+home1 = Hotel('sofa', 'bathroom', 'cell', 1000, [])
+home2 = Hotel('table', 'bedroom', 'cam', 5000, [])
+
