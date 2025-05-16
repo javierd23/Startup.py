@@ -1,5 +1,5 @@
 #This is how we get a most repeating word from a file.
-file = open('words.txt')
+file = open('../API/words.txt')
 email = {}
 
 
