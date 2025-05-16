@@ -1,4 +1,4 @@
-#this is for regular expression
+#this is for regular expression.
 import re
 
 file = open('regex_sum_2209539.txt')
@@ -7,7 +7,7 @@ sun2 = 0
 for line in file:
     line = line.strip()
     nums = re.findall('([0-9]+)', line)
-    for num in nums: #to be able to only print the digit I need to do a for to go thr each one of them.
+    for num in nums: #to be able to only print the number I need to do a for to go thr each one of them.
         sun.append(int(num))
 
 
