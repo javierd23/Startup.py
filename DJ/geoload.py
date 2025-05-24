@@ -3,7 +3,7 @@ import sqlite3
 import json
 import time
 import ssl
-import sys
+
 
 
 serviceurl = 'https://py4e-data.dr-chuck.net/opengeo?'
