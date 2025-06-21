@@ -1,7 +1,7 @@
 # let's build a program that tells you how much you pay for a loan for an entire time.
 import math
 
-from CarlosP01.carlos import result
+
 
 
 class Loans:
@@ -13,7 +13,7 @@ class Loans:
         self.interest_rate = rate / 100
 
     def pay_loan_amount(self):
-        result = []
+        total_cal = []
         monthly_pays = 0
         last_pay = 0
         remaining = 0
@@ -28,12 +28,16 @@ class Loans:
             total_interest += interest_pay
             desc_int = self.monthly_payment - desc_pay
             months = months + 1
-            print(math.ceil(months),math.ceil(self.monthly_payment),
-                  math.ceil(desc_pay),math.ceil(desc_int),math.ceil(self.loan_amount))
+            total_cal.append([
+                {"month":math.ceil(months),
+                 "monthly_pay":math.ceil(self.monthly_payment),
+                 "des_pay": math.ceil(desc_pay),
+                 "des_int": math.ceil(desc_int),
+                 "loan_amount": math.ceil(self.loan_amount)}
+                            ])
             if self.loan_amount < 0: break
 
-        return (f"Pagarias un total de {monthly_pays}, con un total de "
-                f"pago de intereses de {math.ceil(total_interest)} en {months} meses.")
+        return total_cal
 
 #loan1 = Loans(150000, 39800, 10)
 #print(loan1.pay_loan_amount())
@@ -54,6 +58,7 @@ class Bank():
         rate_down = (1 + interest_rat)**self.months - 1
         month_pay = self.loan_amount  * rate_int / rate_down
 
+        total = []
         months_count = 0
         while True:
             dec_pay = month_pay - (self.loan_amount  * interest_rat)
@@ -63,13 +68,19 @@ class Bank():
             pay_month = month_pay- desc_pay
             months_count +=  1
 
-            print(math.ceil(months_count), math.ceil(month_pay),
-                  math.ceil(pay_month), math.ceil(desc_pay), math.ceil(self.loan_amount))
-            if self.loan_amount  <= 0: break
-        return "Asi seran tus pagos"
+            total.append([
+                {"month":math.ceil(months_count),
+                 "month_pay":math.ceil(month_pay),
+                 "pay_month": math.ceil(pay_month),
+                 "des_pay": math.ceil(desc_pay),
+                 "loan_amount": math.ceil(self.loan_amount)}
+                ])
 
-#result = Bank(3000000,5, 48)
-#print(result.bank_loan())
+            if self.loan_amount  <= 0: break
+        return total
+
+result = Bank(3000000,5, 48)
+print(result.bank_loan())
 
 
 
